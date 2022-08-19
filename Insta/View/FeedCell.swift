@@ -96,28 +96,9 @@ class FeedCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(profileImageView)
-        profileImageView.anchor(top: topAnchor, left: leftAnchor,   paddingTop: 12, paddingLeft: 12)
-        profileImageView.setDimensions(height: 40, width: 40)
-        profileImageView.layer.cornerRadius = 40 / 2
         
-        addSubview(userNameButton)
-        userNameButton.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        configureUI()
         
-        addSubview(postImageView)
-        postImageView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor,  right: rightAnchor, paddingTop: 8)
-        postImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        
-        configureActionButtons()
-        
-       addSubview(likesLabel)
-        likesLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, paddingTop: -4, paddingLeft: 8)
-        
-        addSubview(captionLabel)
-        captionLabel.anchor(top: likesLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
-        
-        addSubview(postTimeLabel)
-        postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
     }
     
     required init?(coder: NSCoder) {
@@ -129,12 +110,62 @@ class FeedCell: UICollectionViewCell {
         print ("it is working")
     }
     
-    private func configureActionButtons () {
-        
+    private func configureUI () {
+        addSubview(profileImageView)
+        addSubview(userNameButton)
+        addSubview(postImageView)
         addSubview(stackView)
-        stackView.anchor(top: postImageView.bottomAnchor, width:120, height: 50)
-        
-        
+        addSubview(likesLabel)
+        addSubview(captionLabel)
+        addSubview(postTimeLabel)
+        configureConstraints()
     }
     
+    private func configureConstraints () {
+        
+        profileImageConstraints()
+        
+        userNameButtonConstraints()
+        
+        postImageViewConstraints()
+        
+        stackViewConstraints()
+        
+        likesLabelConstraints()
+        
+        captionLabelConstraints()
+        
+        postTimeLabelConstraints()
+    }
+    
+    private func profileImageConstraints () {
+        profileImageView.anchor(top: topAnchor, left: leftAnchor,   paddingTop: 12, paddingLeft: 12)
+        profileImageView.setDimensions(height: 40, width: 40)
+        profileImageView.layer.cornerRadius = 40 / 2
+    }
+    
+    private func userNameButtonConstraints() {
+        userNameButton.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+    }
+    
+    private func postImageViewConstraints () {
+        postImageView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor,  right: rightAnchor, paddingTop: 8)
+        postImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+    }
+    
+    private func stackViewConstraints() {
+        stackView.anchor(top: postImageView.bottomAnchor, width:120, height: 50)
+    }
+    
+    private func likesLabelConstraints() {
+        likesLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, paddingTop: -4, paddingLeft: 8)
+    }
+    
+    private func captionLabelConstraints() {
+        captionLabel.anchor(top: likesLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+    }
+    
+    private func postTimeLabelConstraints() {
+        postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+    }
 }
