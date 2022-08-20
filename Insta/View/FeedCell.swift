@@ -25,7 +25,7 @@ class FeedCell: UICollectionViewCell {
     private lazy var userNameButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Venom", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         button.addTarget(self, action: #selector(didTapUserName), for: .touchUpInside)
         return button
@@ -106,7 +106,6 @@ class FeedCell: UICollectionViewCell {
     }
     
     @objc func didTapUserName () {
-        
         print ("it is working")
     }
     
