@@ -21,6 +21,7 @@
 		423D629528AEFC82007EDA8E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629428AEFC82007EDA8E /* Extensions.swift */; };
 		423D629828B03C58007EDA8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629728B03C58007EDA8E /* LoginViewController.swift */; };
 		423D629A28B03C76007EDA8E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629928B03C76007EDA8E /* RegisterViewController.swift */; };
+		423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629B28B3D8EC007EDA8E /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		423D629428AEFC82007EDA8E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		423D629728B03C58007EDA8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		423D629928B03C76007EDA8E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		423D629B28B3D8EC007EDA8E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				423D629028AEFACC007EDA8E /* FeedCell.swift */,
+				423D629B28B3D8EC007EDA8E /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */,
 				423D628B28AEEE62007EDA8E /* ProfileViewController.swift in Sources */,
 				423D628928AEEE2A007EDA8E /* NotificationsViewController.swift in Sources */,
 				423D628F28AEEED2007EDA8E /* SearchViewController.swift in Sources */,

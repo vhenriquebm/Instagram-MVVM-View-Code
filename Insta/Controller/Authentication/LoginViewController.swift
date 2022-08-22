@@ -11,7 +11,6 @@ class LoginViewController: UIViewController {
     
     //MARK: - Properties
     
-    
     private lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -19,30 +18,15 @@ class LoginViewController: UIViewController {
         return image
     }()
     
-    private lazy var emailTextField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.textColor = .white
-        tf.keyboardAppearance = .dark
+    private lazy var emailTextField: CustomTextField = {
+        let tf = CustomTextField(placeholder: "email")
         tf.keyboardType = .emailAddress
-        tf.setHeight(50)
-        tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        tf.attributedPlaceholder =  NSAttributedString(string: "e-mail", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
-        
         return tf
     }()
     
     private lazy var passwordTextField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.textColor = .white
-        tf.keyboardAppearance = .dark
-        tf.keyboardType = .default
-        tf.setHeight(50)
-        tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        tf.attributedPlaceholder =  NSAttributedString(string: "senha", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        let tf = CustomTextField(placeholder: "senha")
         tf.isSecureTextEntry = true
-        
         return tf
     }()
     
@@ -64,44 +48,19 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
         return button
-        
     }()
     
     private lazy var dontHaveAccountButton: UIButton = {
-        
         let button = UIButton(type: .system)
-      
-        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        
-        let attributedTittle = NSMutableAttributedString(string: "ainda não tem uma conta?  ", attributes: atts)
-        
-        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        
-        attributedTittle.append(NSAttributedString(string: "Cadastre-se", attributes: boldAtts))
-        
-        button.setAttributedTitle(attributedTittle, for: .normal)
-
+        button.attributedTitle(firstPart: "ainda não tem uma conta?  ", secondPart: "Cadastre-se")
+        button.addTarget(self, action: #selector(presentRegisterController), for: .touchUpInside)
         return button
-        
     }()
     
-    
     private lazy var forgotPasswordButton: UIButton = {
-        
         let button = UIButton(type: .system)
-      
-        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        
-        let attributedTittle = NSMutableAttributedString(string: "Esqueçeu sua senha?  ", attributes: atts)
-        
-        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        
-        attributedTittle.append(NSAttributedString(string: "Recupere aqui", attributes: boldAtts))
-        
-        button.setAttributedTitle(attributedTittle, for: .normal)
-
+        button.attributedTitle(firstPart: "Esqueçeu sua senha?  ", secondPart: "Recupere aqui")
         return button
-        
     }()
     
     //MARK: - Lifecycle
@@ -110,15 +69,12 @@ class LoginViewController: UIViewController {
         configureUI()
     }
     
-    
-    
-    
     //MARK: - Private methods
     
     private func configureUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        gradientColor()
+        configureGradientLayer()
         navigationController?.navigationBar.barStyle = .black
         addSubViews()
         configureConstraints()
@@ -140,13 +96,11 @@ class LoginViewController: UIViewController {
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
-    private func gradientColor() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0,1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+
+    @objc private func presentRegisterController () {
+    let controller = RegisterViewController()
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
-    
     
 }
