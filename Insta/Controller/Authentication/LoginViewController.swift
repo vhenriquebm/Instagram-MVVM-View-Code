@@ -124,9 +124,17 @@ class LoginViewController: UIViewController {
             viewModel.password = sender.text
         }
         
+      updateForm()
+    }
+    
+}
+
+// MARK: - FormViewModel
+
+extension LoginViewController: FormViewModel {
+    func updateForm(){
         loginButton.backgroundColor = viewModel.buttonBackGroundColor
         loginButton.setTitleColor(viewModel.buttonTittleColor, for: .normal)
         loginButton.isEnabled = viewModel.formIsValid
     }
-    
 }
