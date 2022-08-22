@@ -9,6 +9,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
+    private let viewModel = LoginViewModel()
     
     // MARK: - Initializers
     

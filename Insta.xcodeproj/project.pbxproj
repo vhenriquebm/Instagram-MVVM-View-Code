@@ -22,6 +22,7 @@
 		423D629828B03C58007EDA8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629728B03C58007EDA8E /* LoginViewController.swift */; };
 		423D629A28B03C76007EDA8E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629928B03C76007EDA8E /* RegisterViewController.swift */; };
 		423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629B28B3D8EC007EDA8E /* CustomTextField.swift */; };
+		423D629F28B3E798007EDA8E /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629E28B3E798007EDA8E /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		423D629728B03C58007EDA8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		423D629928B03C76007EDA8E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		423D629B28B3D8EC007EDA8E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		423D629E28B3E798007EDA8E /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		423D628028AEEA3C007EDA8E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				423D629E28B3E798007EDA8E /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */,
 				423D628B28AEEE62007EDA8E /* ProfileViewController.swift in Sources */,
+				423D629F28B3E798007EDA8E /* AuthenticationViewModel.swift in Sources */,
 				423D628928AEEE2A007EDA8E /* NotificationsViewController.swift in Sources */,
 				423D628F28AEEED2007EDA8E /* SearchViewController.swift in Sources */,
 				423D629A28B03C76007EDA8E /* RegisterViewController.swift in Sources */,

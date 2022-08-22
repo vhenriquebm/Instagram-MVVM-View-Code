@@ -9,6 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    
+    private var viewModel = LoginViewModel()
+    
     //MARK: - Properties
     
     private lazy var logoImage: UIImageView = {
@@ -27,6 +30,8 @@ class LoginViewController: UIViewController {
     private lazy var passwordTextField: UITextField = {
         let tf = CustomTextField(placeholder: "senha")
         tf.isSecureTextEntry = true
+        tf.autocorrectionType = .no
+
         return tf
     }()
     
@@ -42,11 +47,12 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        button.isEnabled = false
         return button
     }()
     
@@ -67,6 +73,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         configureUI()
+        configureNotificationsObservers()
     }
     
     //MARK: - Private methods
@@ -101,6 +108,25 @@ class LoginViewController: UIViewController {
     let controller = RegisterViewController()
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func configureNotificationsObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+    }
+    
+    @objc private func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+            
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        loginButton.backgroundColor = viewModel.buttonBackGroundColor
+        loginButton.setTitleColor(viewModel.buttonTittleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
     }
     
 }
