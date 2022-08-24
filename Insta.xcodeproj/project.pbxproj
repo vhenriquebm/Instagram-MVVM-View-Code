@@ -25,6 +25,8 @@
 		423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629B28B3D8EC007EDA8E /* CustomTextField.swift */; };
 		423D629F28B3E798007EDA8E /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D629E28B3E798007EDA8E /* AuthenticationViewModel.swift */; };
 		423D62A128B41398007EDA8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423D62A028B41398007EDA8E /* GoogleService-Info.plist */; };
+		42C0FC7028B6B9DF004881EF /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C0FC6F28B6B9DF004881EF /* ProfileCell.swift */; };
+		42C0FC7228B6B9F9004881EF /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C0FC7128B6B9F9004881EF /* ProfileHeader.swift */; };
 		42C7D29028B41A680075565A /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C7D28F28B41A680075565A /* ImageUploader.swift */; };
 		42C7D29228B41A760075565A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C7D29128B41A760075565A /* AuthService.swift */; };
 		42C7D29428B41F480075565A /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C7D29328B41F480075565A /* AuthCredentials.swift */; };
@@ -50,6 +52,8 @@
 		423D629B28B3D8EC007EDA8E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		423D629E28B3E798007EDA8E /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		423D62A028B41398007EDA8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42C0FC6F28B6B9DF004881EF /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		42C0FC7128B6B9F9004881EF /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		42C7D28F28B41A680075565A /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		42C7D29128B41A760075565A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		42C7D29328B41F480075565A /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
@@ -140,7 +144,8 @@
 		423D628228AEEA43007EDA8E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				423D629028AEFACC007EDA8E /* FeedCell.swift */,
+				42C0FC6E28B6B9A3004881EF /* Profile */,
+				42C0FC6D28B6B99A004881EF /* Feed */,
 				423D629B28B3D8EC007EDA8E /* CustomTextField.swift */,
 			);
 			path = View;
@@ -161,6 +166,23 @@
 				423D629928B03C76007EDA8E /* RegisterViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		42C0FC6D28B6B99A004881EF /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				423D629028AEFACC007EDA8E /* FeedCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		42C0FC6E28B6B9A3004881EF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				42C0FC6F28B6B9DF004881EF /* ProfileCell.swift */,
+				42C0FC7128B6B9F9004881EF /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		42C7D28E28B41A540075565A /* API */ = {
@@ -305,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				423D629C28B3D8EC007EDA8E /* CustomTextField.swift in Sources */,
+				42C0FC7228B6B9F9004881EF /* ProfileHeader.swift in Sources */,
 				423D628B28AEEE62007EDA8E /* ProfileViewController.swift in Sources */,
 				42C7D29028B41A680075565A /* ImageUploader.swift in Sources */,
 				423D629F28B3E798007EDA8E /* AuthenticationViewModel.swift in Sources */,
@@ -319,6 +342,7 @@
 				423D626E28AEEA09007EDA8E /* SceneDelegate.swift in Sources */,
 				423D629128AEFACC007EDA8E /* FeedCell.swift in Sources */,
 				42C7D29428B41F480075565A /* AuthCredentials.swift in Sources */,
+				42C0FC7028B6B9DF004881EF /* ProfileCell.swift in Sources */,
 				423D629828B03C58007EDA8E /* LoginViewController.swift in Sources */,
 				42C7D29228B41A760075565A /* AuthService.swift in Sources */,
 			);
