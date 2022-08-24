@@ -203,6 +203,6 @@ class ProfileHeader: UICollectionReusableView {
     
     
     @objc private func editButtonTapped() {
-    print ("It is working")
+    print ("It is working when the button was tapped")
     }
 }
