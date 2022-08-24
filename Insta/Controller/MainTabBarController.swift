@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainTabBarController: UITabBarController {
     
@@ -14,12 +15,13 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabViewController()
+        checkIfUserIsLoggedIn()
     }
     
     //MARK: - Private methods
-
+    
     private func configureTabViewController () {
-   
+        
         view.backgroundColor = .white
         
         tabBar.tintColor = .black
@@ -36,7 +38,7 @@ class MainTabBarController: UITabBarController {
         let search = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchViewController())
         
         viewControllers = [feed, search, imageSelector, notifications, profile]
-
+        
     }
     
     private func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
@@ -48,4 +50,21 @@ class MainTabBarController: UITabBarController {
         return navigation
     }
     
+    //MARK: - API
+    
+    private func checkIfUserIsLoggedIn() {
+        
+        let authentication = Auth.auth()
+        
+        DispatchQueue.main.async {
+            if authentication.currentUser == nil {
+                let controller = LoginViewController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        }
+    }
 }
+
+

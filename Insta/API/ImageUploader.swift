@@ -28,9 +28,6 @@ struct ImageUploader {
                 
                 completion(imageUrl)
             }
-            
         }
-        
-     
     }
 }

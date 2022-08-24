@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -53,6 +54,7 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(login), for: .touchUpInside)
         return button
     }()
     
@@ -85,6 +87,23 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         addSubViews()
         configureConstraints()
+        
+    }
+    
+    @objc private func login() {
+        
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        Authservice.logUserIn(with: email, password: password) { result, error in
+            
+            if let error = error {
+                print ("DEBUG: it was not possible logged user in: \(error)")
+                return
+            }
+            
+            self.dismiss(animated: true)
+        }
         
     }
     

@@ -10,6 +10,11 @@ import FirebaseFirestore
 
 struct Authservice {
     
+    static func logUserIn(with email: String, password: String, completion: AuthDataResultCallback?) {
+        
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     static func registerUserWith (credentials: AuthCredentials, completion: @escaping (Error?) -> Void )  {
         
         ImageUploader.uploadImage(image: credentials.profileImage)
