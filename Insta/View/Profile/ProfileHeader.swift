@@ -6,17 +6,23 @@
 //
 
 import UIKit
-import Stevia
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
     
     static let reuseIdentifier: String = "ProfileHeader"
     
+    var viewModel:ProfileHeaderViewModel? {
+        didSet{
+            configure()
+        }
+    }
+    
     //MARK: - Properties
     
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "venom-7")
+        iv.backgroundColor = .lightGray
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
@@ -24,7 +30,6 @@ class ProfileHeader: UICollectionReusableView {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Venom"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -200,9 +205,15 @@ class ProfileHeader: UICollectionReusableView {
         return attributedText
     }
     
-    
-    
     @objc private func editButtonTapped() {
     print ("It is working when the button was tapped")
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else {return}
+        nameLabel.text = viewModel.getUsername
+        profileImageView.sd_setImage(with: viewModel.getProfileImageURL)
+
+
     }
 }

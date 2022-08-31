@@ -9,15 +9,17 @@ import UIKit
 
 class ProfileViewController: UICollectionViewController {
     
-    override func viewDidLoad() {
-        configureCollectionView()
-        
+    var user: User? {
+        didSet {
+            collectionView.reloadData()
+        }
     }
     
-    
-    
-    
-    
+    override func viewDidLoad() {
+        configureCollectionView()
+        fetchCurrentUser()
+        navigationController?.navigationBar.tintColor = .black
+    }
     
         //MARK: - Private methods
     
@@ -29,8 +31,18 @@ class ProfileViewController: UICollectionViewController {
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.reuseIdentifier)
     }
     
-}
+    func fetchCurrentUser() {
+       
+       UserService.fetchUser { user in
+           
+           self.user = user
+           
+           self.navigationItem.title = self.user?.userName
 
+       }
+       
+   }
+}
 
 //MARK: - UICollectionViewDataSource
 
@@ -63,6 +75,11 @@ extension ProfileViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileHeader.reuseIdentifier, for: indexPath) as? ProfileHeader {
+            
+            if let user = user {
+                header.viewModel = ProfileHeaderViewModel(user: user)
+            }
+            
             return header
         }
         
