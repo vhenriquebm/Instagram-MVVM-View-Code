@@ -10,17 +10,25 @@ import FirebaseAuth
 
 class MainTabBarController: UITabBarController {
     
+    //MARK: - Properties
+    
+    private var user: User?{
+        didSet{
+            guard let user = user else {return}
+            configureTabViewController(with: user)
+        }
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTabViewController()
         checkIfUserIsLoggedIn()
+        fetchCurrentUser()
     }
     
     //MARK: - Private methods
     
-    private func configureTabViewController () {
+    private func configureTabViewController (with user: User) {
         
         view.backgroundColor = .white
         
@@ -32,8 +40,8 @@ class MainTabBarController: UITabBarController {
         let notifications = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationsViewController())
         
         
-        let profileLayout = UICollectionViewFlowLayout()
-        let profile = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: ProfileViewController(collectionViewLayout: profileLayout))
+        let profileController = ProfileViewController(user: user)
+        let profile = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: profileController)
         
         let imageSelector = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorViewController())
         
@@ -61,12 +69,28 @@ class MainTabBarController: UITabBarController {
         DispatchQueue.main.async {
             if authentication.currentUser == nil {
                 let controller = LoginViewController()
+                controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true)
             }
         }
     }
+    
+    
+    func fetchCurrentUser() {
+       UserService.fetchUser { user in
+           
+           print ("o usuário atual é \(user)")
+           self.user = user
+       }
+   }
 }
 
-
+extension MainTabBarController: AuthenticationDelegate {
+    
+    func authenticationComplete() {
+        fetchCurrentUser()
+    }
+    
+}

@@ -8,10 +8,17 @@
 import UIKit
 import FirebaseAuth
 
+
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationComplete()
+}
+
 class LoginViewController: UIViewController {
     
     
     private var viewModel = LoginViewModel()
+    
+    weak var delegate: AuthenticationDelegate?
     
     //MARK: - Properties
     
@@ -102,6 +109,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            self.delegate?.authenticationComplete()
             self.dismiss(animated: true)
         }
         
@@ -124,7 +132,9 @@ class LoginViewController: UIViewController {
     
 
     @objc private func presentRegisterController () {
+        
     let controller = RegisterViewController()
+        controller.delegate = delegate
         
         navigationController?.pushViewController(controller, animated: true)
     }

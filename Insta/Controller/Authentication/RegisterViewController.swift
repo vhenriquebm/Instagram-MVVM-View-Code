@@ -9,6 +9,9 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
+    //MARK: - Properties
+    
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
     
@@ -157,6 +160,7 @@ class RegisterViewController: UIViewController {
                 print ("DEBUG: failed to register user \(error.localizedDescription)")
             }
             
+            self.delegate?.authenticationComplete()
             self.dismiss(animated: true)
             print ("Successfully registered user with Firestore")
         }
